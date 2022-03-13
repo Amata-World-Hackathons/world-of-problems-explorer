@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export:gh-pages": "BASE_PATH=\"/world-of-problems-explorer\" next build && next export",
     "start": "next start",
     "lint": "next lint"
   },

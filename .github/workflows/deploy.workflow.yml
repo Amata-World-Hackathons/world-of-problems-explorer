@@ -1,7 +1,7 @@
 name: deploy-workflow
 on: [push]
 jobs:
-  deploy-job:
+  gh-pages-job:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,8 +17,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
       - run: yarn
-      - run: yarn run next build
-      - run: yarn run next export
+      - run: yarn export:gh-pages
       - run: touch out/.nojekyll
       - name: Deploy to GitHub pages
         uses: JamesIves/github-pages-deploy-action@v4.2.5

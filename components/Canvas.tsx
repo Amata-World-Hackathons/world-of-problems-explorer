@@ -3,6 +3,8 @@ import classnames from "classnames";
 import { useResizeDetector } from "react-resize-detector";
 import { useEffect, useRef, useState } from "react";
 
+// "pk.eyJ1IjoiYW1hdGFicnlhbiIsImEiOiJjbDBwMm4wZ2ExcXZvM2pwd3RjMzdibjJmIn0.6tfNsOc97LQrfnI4JvE4oA"
+
 export default function Canvas({ className }: { className?: string }) {
   const {
     width = 0,
