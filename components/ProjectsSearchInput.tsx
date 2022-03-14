@@ -3,6 +3,7 @@ import classnames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import { Project, useProjectsQuery } from "../contexts/ApiContext";
 import Loading from "./Loading";
+import Link from "next/link";
 
 interface TextWithMatchProps extends React.HTMLAttributes<HTMLSpanElement> {
   match?: string;
@@ -60,8 +61,6 @@ const ProjectsSearchInput: React.FC<ProjectSearchInputProps> = ({
 
   const { data, loading } = useProjectsQuery({ skip: !active, search });
 
-  console.log("RED", active, search, activeProject);
-
   useEffect(() => {
     const listener = (ev: KeyboardEvent) => {
       if (ev.key === "/" && !isActiveRef.current) {
@@ -70,7 +69,6 @@ const ProjectsSearchInput: React.FC<ProjectSearchInputProps> = ({
         inputRef.current?.focus();
         return false;
       } else if (ev.key === "Escape") {
-        console.log("CLOSE HERE 2222");
         ev.preventDefault();
         setActive(false);
         return false;
@@ -154,7 +152,6 @@ const ProjectsSearchInput: React.FC<ProjectSearchInputProps> = ({
               }
 
               case "Enter":
-                console.log("ACTIVE", activeProject);
                 if (activeProject) {
                   setActive(false);
                   onSelectProject(activeProject.id);
@@ -202,7 +199,19 @@ const ProjectsSearchInput: React.FC<ProjectSearchInputProps> = ({
                     : "bg-slate-100"
                 )}
               >
-                <TextWithMatch match={search}>{project.name}</TextWithMatch>
+                <Link
+                  href={{
+                    pathname: "/projects/[projectId]",
+                    query: { projectId: project.id },
+                  }}
+                >
+                  <a
+                    onClick={() => setActive(false)}
+                    className="hover:underline underline-offset-2"
+                  >
+                    <TextWithMatch match={search}>{project.name}</TextWithMatch>
+                  </a>
+                </Link>
               </li>
             ))
           )}

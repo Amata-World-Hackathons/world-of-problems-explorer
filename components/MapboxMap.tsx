@@ -304,7 +304,7 @@ const MapboxMap: React.FC<MapboxMapProps> = ({
           parseFloat(match[0].replace("/", "")),
         ]);
         mapRef.current?.setZoom(parseFloat(match[2].replace("/", "")));
-        router.replace({ hash: "" });
+        setTimeout(() => router.replace({ hash: "" }), 300);
       }
     }
   }, [router]);

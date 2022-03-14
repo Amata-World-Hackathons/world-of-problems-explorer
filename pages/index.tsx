@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import AbstractSpaceOverlay from "../components/AbstractSpaceOverlay";
 import MapboxMap from "../components/MapboxMap";
+import NavigationMenu from "../components/NavigationMenu";
 import ProjectOverlay from "../components/ProjectOverlay";
 import ProjectsSearchInput from "../components/ProjectsSearchInput";
 
@@ -23,6 +24,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="h-full w-full relative">
+        <NavigationMenu />
+
         <MapboxMap
           onClickAnchor={(anchor) =>
             router.push({

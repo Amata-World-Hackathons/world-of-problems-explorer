@@ -6,7 +6,10 @@ module.exports = {
     "./utils/**/*.{ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      sans: ["Roboto", "sans-serif"],
+      mono: ["Inconsolata", "monospace"],
+    },
   },
   plugins: [],
 };
