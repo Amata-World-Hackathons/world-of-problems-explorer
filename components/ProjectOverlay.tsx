@@ -5,7 +5,7 @@ import { bgColorForTag, mapQueryFor, textColorForTag } from "../utils";
 import ReactMarkdown from "react-markdown";
 import Loading from "./Loading";
 import Link from "next/link";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 export interface ProjectOverlayProps
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -75,7 +75,7 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
                 <span>this is a fork, </span>
                 <Link
                   href={{
-                    pathname: "/projects/[projectId]",
+                    pathname: "/projects/[projectId]/fork",
                     query: { projectId: data.project.forkedFromProjectId },
                   }}
                 >
@@ -136,7 +136,7 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
               This problem has no solution yet, be the first to{" "}
               <Link
                 href={{
-                  pathname: "/projects/[projectid]/fork",
+                  pathname: "/projects/[projectId]/fork",
                   query: { projectId: data.project.id },
                 }}
               >

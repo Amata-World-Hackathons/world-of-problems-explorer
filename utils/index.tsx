@@ -8,6 +8,32 @@ type Subject =
   | "humanitarian"
   | "unknown";
 
+export const allTags: Readonly<ProblemSpace[]> = [
+  "technology",
+  "artificial intelligence",
+  "augmented reality",
+  "health",
+  "medicine",
+  "well-being",
+  "spirituality",
+  "exercise",
+  "environment",
+  "pollution",
+  "water-pollution",
+  "air-pollution",
+  "deforestation",
+  "endangered-species",
+  "society",
+  "culture",
+  "history",
+  "poverty",
+  "obesity",
+  "humanitarian",
+  "charity",
+  "disaster-relief",
+  "humanitarian-aid",
+];
+
 export function subjectForTag(tag: ProblemSpace): Subject {
   switch (tag) {
     case "technology":
