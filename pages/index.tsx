@@ -24,8 +24,8 @@ const Home: NextPage = () => {
       <MapboxMap
         onClickAnchor={(anchor) =>
           router.push({
-            pathname: "/projects/[projectId]/anchors/[anchorId]",
-            query: { projectId: anchor.projectId, anchorId: anchor.id },
+            pathname: "/projects/[projectId]",
+            query: { projectId: anchor.projectId },
           })
         }
         className="w-full h-full m-0 "
