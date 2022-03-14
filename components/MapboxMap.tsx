@@ -292,7 +292,6 @@ const MapboxMap: React.FC<MapboxMapProps> = ({
     if (router.query.lat && router.query.lng && router.query.zoom) {
       const { lat, lng, zoom, ...rest } = router.query;
 
-      console.log("GOT", lat, lng, zoom);
       mapRef.current?.setCenter([
         parseFloat(lng as string),
         parseFloat(lat as string),
