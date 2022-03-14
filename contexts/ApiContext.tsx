@@ -149,7 +149,7 @@ export function useProjectQuery(projectId?: string, anchorId?: number) {
 
       setResult({
         data: {
-          anchors,
+          anchors: anchors.filter((a) => a.projectId === snapshot.id),
           project: {
             ...snapshot.data(),
             id: snapshot.id,
