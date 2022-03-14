@@ -25,7 +25,9 @@ const allTagsAsSuggestions = allTags.map((tag) => ({ id: tag, text: tag }));
 
 const ProjectForm: React.FC<{ project?: Project }> = ({ project }) => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm({ defaultValues: project });
+  const { register, handleSubmit } = useForm({
+    defaultValues: { ...project, imageUrl: project?.imageUrls[0] },
+  });
   const [tags, setTags] = useState<{ id: string; text: string }[]>(
     project ? project.tags.map((t) => ({ id: t, text: t })) : []
   );
@@ -95,9 +97,9 @@ const ProjectForm: React.FC<{ project?: Project }> = ({ project }) => {
             newProject = await createProject({
               ...changes,
               forkedFromProjectId: project!.id,
-            });
+            } as any);
           } else {
-            newProject = await createProject(changes);
+            newProject = await createProject(changes as any);
           }
 
           router.push({

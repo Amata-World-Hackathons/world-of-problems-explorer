@@ -204,7 +204,7 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
               </button>
 
               <section>
-                <ReactMarkdown>{anchor.description}</ReactMarkdown>
+                <ReactMarkdown>{anchor.contents}</ReactMarkdown>
               </section>
 
               <div className={classnames("w-full h-0.5 my-4", bgColor)} />
