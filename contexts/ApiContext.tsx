@@ -135,9 +135,21 @@ export function useProjectQuery(projectId?: string, anchorId?: number) {
         doc(firebaseDb, "wope-projects", projectId!)
       );
 
+      const asnapshots = await getDocs(
+        query(collection(firebaseDb, "wope-project-anchors"))
+      );
+
+      let anchors: ProjectAnchor[] = [];
+      asnapshots.forEach((doc) =>
+        anchors.push({
+          ...doc.data(),
+          id: doc.id,
+        } as any)
+      );
+
       setResult({
         data: {
-          anchors: [],
+          anchors,
           project: {
             ...snapshot.data(),
             id: snapshot.id,
