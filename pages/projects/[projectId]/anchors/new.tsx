@@ -156,7 +156,7 @@ const ProjectAnchorForm: React.FC<{ project: Project }> = ({ project }) => {
         </label>
         <select
           id="range"
-          {...register("range")}
+          {...register("impactRange")}
           className="w-full max-w-sm block p-2 text-slate-900"
         >
           <option value="neighbourhood">Neighbourhood</option>
