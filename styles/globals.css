@@ -1,54 +1,66 @@
+@import "mapbox-gl";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-path {
-  animation-name: path-animate-in-1;
-  animation-duration: 1200ms;
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
 }
 
-path:nth-child(3n) {
-  animation-name: path-animate-in-2;
-  animation-duration: 900ms;
+#__next .mapboxgl-popup-content {
+  padding: 0;
+  background-color: red;
 }
 
-path:nth-child(3n + 1) {
-  animation-name: path-animate-in-3;
-  animation-duration: 800ms;
+#__next .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+  border-top-color: red;
+}
+#__next .mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+  border-bottom-color: red;
+}
+#__next .mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+  border-right-color: red;
+}
+#__next .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+  border-left-color: red;
 }
 
-@keyframes path-animate-in-1 {
-  0% {
-    opacity: 0;
-    transform: translate(0, -10px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
+h1,
+h2,
+h3,
+code,
+pre {
+  font-family: "Inconsolata", monospace;
 }
 
-@keyframes path-animate-in-2 {
-  0% {
-    opacity: 0;
-    transform: translate(0, -20px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
+.mapboxgl-popup {
+  opacity: 0;
 }
 
-@keyframes path-animate-in-3 {
-  0% {
-    opacity: 0;
-    transform: translate(0, -30px);
-  }
+.contents-markdown > * {
+  margin-bottom: 0.5rem;
+}
 
-  100% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
+.contents-markdown h1 {
+  @apply text-3xl;
+}
+
+.contents-markdown h2 {
+  @apply text-2xl;
+}
+
+.contents-markdown h3 {
+  @apply text-xl;
+}
+
+.contents-markdown h4 {
+  @apply text-lg;
+}
+
+.contents-markdown h6 {
+  @apply text-sm;
 }

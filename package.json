@@ -10,17 +10,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@turf/distance": "^6.5.0",
     "@types/d3": "^7.1.0",
     "classnames": "^2.3.1",
     "d3": "^7.3.0",
+    "lodash": "^4.17.21",
     "mapbox-gl": "^2.7.0",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-markdown": "^8.0.0",
     "react-resize-detector": "^7.0.0",
     "tailwindcss": "^3.0.23"
   },
   "devDependencies": {
+    "@types/geojson": "^7946.0.8",
+    "@types/lodash": "^4.14.179",
     "@types/mapbox-gl": "^2.6.3",
     "@types/node": "17.0.21",
     "@types/react": "17.0.40",
