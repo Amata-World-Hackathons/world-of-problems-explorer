@@ -184,10 +184,14 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
               <button
                 className="underline underline-offset-2"
                 onClick={() => {
-                  router.push({
-                    pathname: "/",
-                    hash: hashUrlForAnchor(anchor),
-                  });
+                  router.push(
+                    {
+                      pathname: "/",
+                      hash: hashUrlForAnchor(anchor),
+                    },
+                    undefined,
+                    { shallow: true }
+                  );
                 }}
               >
                 <code>
