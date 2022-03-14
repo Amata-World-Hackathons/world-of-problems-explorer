@@ -71,7 +71,8 @@ const ProjectAnchorForm: React.FC<{ project: Project }> = ({ project }) => {
 
     const map = new Map({
       container: mapContainer.current!,
-      style: "mapbox://styles/amatahacksnjams/cl0p3l629000d15s8e4ekv0uj",
+      //   style: "mapbox://styles/amatahacksnjams/cl0p3l629000d15s8e4ekv0uj",
+      style: "mapbox://styles/amatahacksnjams/cl0rayyhv00c214n2ngjn40ri",
       center: [0, 0],
       zoom: 2,
       minZoom: 1,
@@ -125,7 +126,7 @@ const ProjectAnchorForm: React.FC<{ project: Project }> = ({ project }) => {
             query: {
               lat: anchor.latitude,
               lng: anchor.longitude,
-              zoom: 13,
+              zoom: 8,
             },
           });
         })}

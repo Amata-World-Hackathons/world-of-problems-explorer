@@ -136,6 +136,17 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
             Last updated: {data.project.createdDate.toLocaleDateString()}
           </span>
 
+          {data.project.callToActionUrl ? (
+            <a
+              className="mt-2 text-xs"
+              target="_blank"
+              rel="noreferrer nofollow"
+              href={data.project.callToActionUrl}
+            >
+              {data.project.callToActionUrl}
+            </a>
+          ) : null}
+
           <Link
             href={{
               pathname: "/projects/[projectId]/edit",
@@ -204,6 +215,17 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
                   {anchor.latitude.toFixed(6)}, {anchor.longitude.toFixed(6)}
                 </code>
               </button>
+
+              {anchor.callToActionUrl ? (
+                <a
+                  className="mt-2 text-xs"
+                  target="_blank"
+                  rel="noreferrer nofollow"
+                  href={anchor.callToActionUrl}
+                >
+                  {anchor.callToActionUrl}
+                </a>
+              ) : null}
 
               <section>
                 <ReactMarkdown>{anchor.contents}</ReactMarkdown>

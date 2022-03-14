@@ -88,6 +88,7 @@ export interface ProjectAnchor {
   longitude: number;
   relevance: number;
   contents: string;
+  relevantTag: string;
   impactRange: "location" | "neighbourhood" | "state" | "country" | "continent";
   callToActionUrl?: string;
 }
@@ -144,6 +145,7 @@ export function useProjectQuery(projectId?: string, anchorId?: number) {
         anchors.push({
           ...doc.data(),
           id: doc.id,
+          relevantTag: snapshot.data()!.tags[0],
         } as any)
       );
 
@@ -276,31 +278,34 @@ export function useProjectAnchorsQuery({
     }
 
     (debouncedRef as any).current = setTimeout(async () => {
-      const snapshots = await getDocs(
-        query(collection(firebaseDb, "wope-project-anchors"))
-      );
-
-      let filtered: ProjectAnchor[] = [];
-      snapshots.forEach((doc) =>
-        filtered.push({
-          ...doc.data(),
-          id: doc.id,
-        } as any)
-      );
-
       const projSnaps = await getDocs(
         query(collection(firebaseDb, "wope-projects"))
       );
 
       let projects: Project[] = [];
       projSnaps.forEach((doc) =>
-        filtered.push({
+        projects.push({
           ...doc.data(),
           id: doc.id,
           createdDate: new Date(doc.data().createdDate.seconds * 1000),
           lastUpdated: new Date(doc.data().lastUpdated.seconds * 1000),
         } as any)
       );
+
+      const snapshots = await getDocs(
+        query(collection(firebaseDb, "wope-project-anchors"))
+      );
+
+      let filtered: ProjectAnchor[] = [];
+      snapshots.forEach((doc) => {
+        const project = projects.find((p) => p.id === doc.data()!.projectId);
+
+        filtered.push({
+          ...doc.data(),
+          id: doc.id,
+          relevantTag: project?.tags[0],
+        } as any);
+      });
 
       if (tags) {
         filtered = filtered.filter((anchor) => {

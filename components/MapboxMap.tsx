@@ -88,7 +88,8 @@ const MapboxMap: React.FC<MapboxMapProps> = ({
 
     const map = new Map({
       container: mapContainer.current!,
-      style: "mapbox://styles/amatahacksnjams/cl0p3l629000d15s8e4ekv0uj",
+      // style: "mapbox://styles/amatahacksnjams/cl0p3l629000d15s8e4ekv0uj",
+      style: "mapbox://styles/amatahacksnjams/cl0rayyhv00c214n2ngjn40ri",
       center,
       zoom: zoom,
       minZoom: 0,
@@ -114,12 +115,12 @@ const MapboxMap: React.FC<MapboxMapProps> = ({
         type: "fill",
         source: SOURCE_COUNTRIES,
         paint: {
-          "fill-color": "rgba(200, 100, 240, 0.4)",
+          "fill-color": "rgba(100, 200, 240, 0.4)",
           "fill-color-transition": {
             delay: 1000,
             duration: 3000,
           },
-          "fill-outline-color": "rgba(200, 100, 240, 1)",
+          "fill-outline-color": "rgba(100, 200, 240, 1)",
         },
       });
 
