@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Inspiration
 
-## Getting Started
+Our team have always been fascinated by geospatial technology and how we could push the boundaries of what is possible with technology. We saw an opportunity to map these problems into space to try and make sense of the data, and we were pretty pleased with the results.
 
-First, run the development server:
+## What it does
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+The World of Problems Explorer (working title) is an application that models the worlds problem on a map to help make sense of how these problems affect us. Anybody can propose a project in the system, but that by itself is not enough to make it discoverable.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Users can improve the discoverability of their projects by placing markers on the map. These markers are meant to indicate how a project can improve people's lives in the real world.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Every project will have the option of including a "call to action" link. We don't try to do everything on this platform, and we appreciate there are more mature solutions out there. We see ourselves as the gateway to bridge all these solutions together by creating a platform to help people discover problems and ideas. It's fully open and collaborative, anybody can edit and modify the projects at any time.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## How we built it
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+We built it as a mobile friendly web application using Firebase as a backend powered by Next.js and Mapbox in the frontend. We were a little late joining the party, so everything you see has been put together in the course of two days.
 
-## Learn More
+## Challenges we ran into
 
-To learn more about Next.js, take a look at the following resources:
+- Lack of time
+- Mapbox isn't the easiest or most well documented piece of technology to work with
+- Firebase recently updated to v9, and documentation was a little bit harder to come by
+- Plenty of great ideas, but hard to fit them on a mobile screen
+- We used Imgur for image uploads but the uploads were being throttled heavily, had to give it up in the end
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Accomplishments that we're proud of
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Coming up with a great idea how to use geolocation to promote expose problems
+- Putting an app like this together in 2 days, not bad!
 
-## Deploy on Vercel
+## What we learned
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Abstract problems are hard to make sense of
+- Encouraging collaboration is difficult on any platform
+- Image uploads are not free (or stable)
+- Mapping technologies are still very immature and hard to deal with
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## What's next for World of Problems
+
+There is plenty of scope for improvement:
+
+- Project tags haven't been used as much as they could have, we could have done more to make them "pop out" from the map
+- Putting the projects behind a blockchain for better interoperability and accounting
+- Adopting some of these technologies and techniques into our own startup idea (geospatial but with more AR elements)
