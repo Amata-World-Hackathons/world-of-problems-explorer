@@ -179,7 +179,7 @@ const ProjectsSearchInput: React.FC<ProjectSearchInputProps> = ({
         />
 
         <ul
-          className={classnames("flex-1 flex flex-col w-full", {
+          className={classnames("flex-1 flex flex-col w-full px-2", {
             hidden: !active,
             "py-8": active,
           })}
@@ -194,7 +194,7 @@ const ProjectsSearchInput: React.FC<ProjectSearchInputProps> = ({
                 <li
                   key={project.id}
                   className={classnames(
-                    "w-full p-4 rounded-lg mb-2",
+                    "w-full p-4 mb-2",
                     activeProject?.id && activeProject.id === project.id
                       ? "bg-blue-400"
                       : "bg-slate-100"

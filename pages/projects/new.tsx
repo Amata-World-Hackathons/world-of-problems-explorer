@@ -66,7 +66,7 @@ const ProjectForm: React.FC<{ project?: Project }> = ({ project }) => {
   };
 
   return (
-    <section className="w-full max-w-xl m-auto mt-24">
+    <section className="w-full max-w-xl m-auto mt-24 px-2">
       <h1 className="text-3xl mb-4">Project details</h1>
 
       <hr className="my-4" />
@@ -74,8 +74,6 @@ const ProjectForm: React.FC<{ project?: Project }> = ({ project }) => {
       <form
         onKeyDown={(e) => e.stopPropagation()}
         onSubmit={handleSubmit(async (data) => {
-          console.log("DO SOMETHING HERE", data);
-
           const now = new Date();
 
           const changes = {

@@ -125,7 +125,9 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
             ))}
           </ul>
 
-          <span className="uppercase text-xs">{data.project.status}</span>
+          <span className="uppercase text-sm text-white">
+            {data.project.status}
+          </span>
 
           <span className="mt-2 text-sm">
             Proposed: {data.project.createdDate.toLocaleDateString()}
@@ -165,7 +167,7 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
               query: { projectId: data.project.id },
             }}
           >
-            <a className="mt-4 text-sm">Add a new marker</a>
+            <a className="mt-4 mb-2 text-sm">Add a new marker</a>
           </Link>
 
           {data.anchors.map((anchor) => (
@@ -174,7 +176,7 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
                 <img
                   src={anchor.imageUrl}
                   alt={anchor.name}
-                  className="m-auto max-w-full"
+                  className="m-auto max-w-full mb-4"
                 />
               ) : null}
 
@@ -227,6 +229,12 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
             </Link>{" "}
             of the project with your own proposal
           </div>
+
+          <hr className="my-4" />
+
+          <Link href="/">
+            <a>Back to the map</a>
+          </Link>
         </div>
       ) : null}
     </section>

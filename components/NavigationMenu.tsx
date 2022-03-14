@@ -14,7 +14,7 @@ const NavigationMenu: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
     <nav {...rest} className={classnames("text-slate-300")}>
       <div
         className={classnames(
-          "absolute top-0 right-0 transition bg-slate-800 py-1 px-3 z-20 shadow-md shadow-cyan-600 border-cyan-600 border-2",
+          "absolute top-0 right-0 transition bg-slate-800 pl-2 md:py-1 md:px-3 z-20 shadow-md shadow-cyan-600 border-cyan-600 border rounded-bl-lg md:rounded-none",
           {
             "opacity-0 translate-x-full": loading,
           }
@@ -22,10 +22,13 @@ const NavigationMenu: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
       >
         {user ? (
           <>
-            <span className="text-xs uppercase">{user.email}</span>
+            <span className="text-xs uppercase hidden md:inline mr-4">
+              {user.email}
+            </span>
 
-            <button className="ml-4 text-xs uppercase" onClick={logout}>
-              Signout
+            <button className="text-xs uppercase" onClick={logout}>
+              <span className="hidden md:inline">Signout</span>
+              <span className="material-icons md:hidden">logout</span>
             </button>
           </>
         ) : (
@@ -33,12 +36,13 @@ const NavigationMenu: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
             className="font-mono lowercase hover:underline underline-offset-2"
             onClick={() => setIsAuthModalOpen(true)}
           >
-            Login
+            <span className="hidden md:inline">Login</span>
+            <span className="material-icons md:hidden">login</span>
           </button>
         )}
       </div>
 
-      <ul className="bg-slate-800 absolute left-0 top-1/2 -translate-y-1/2 z-20 rounded-r-lg py-2 border-r border-y border-cyan-600">
+      <ul className="bg-slate-800 hidden md:block absolute left-0 top-1/2 -translate-y-1/2 z-20 rounded-r-lg py-2 border-r border-y border-cyan-600">
         <li>
           <Link
             href={{

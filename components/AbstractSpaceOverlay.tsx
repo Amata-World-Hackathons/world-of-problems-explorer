@@ -20,9 +20,12 @@ const AbstractSpaceOverlay: React.FC<
 
   return (
     <div
-      className="absolute top-0 left-0 bottom-0 right-0 bg-slate-800 pointer-events-none z-10"
+      className="absolute top-0 left-0 bottom-0 right-0 bg-slate-800 pointer-events-none z-10 flex flex-col justify-center items-center"
       style={{ opacity }}
-    ></div>
+    >
+      <h3 className="text-slate-300 text-xl">World of Problems</h3>
+      <div className="text-slate-300 text-3xl">Zoom in to begin</div>
+    </div>
   );
 };
 
