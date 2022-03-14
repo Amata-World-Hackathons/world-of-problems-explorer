@@ -29,7 +29,6 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
   useEffect(() => {
     const listener = (ev: KeyboardEvent) => {
       if (projectIdRef.current && ev.key === "Escape") {
-        console.log("CLOSE HERE");
         onCloseRef.current();
         ev.preventDefault();
         return false;

@@ -33,7 +33,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
     if (uiLocationRef.current) {
       uiRef.current!.start(uiLocationRef.current, {
-        signInSuccessUrl: "/",
+        signInSuccessUrl: process.env.NEXT_PUBLIC_BASE_PATH || "/",
         signInOptions: [
           legacyFirebase.auth.GoogleAuthProvider.PROVIDER_ID,
           legacyFirebase.auth.EmailAuthProvider.PROVIDER_ID,
