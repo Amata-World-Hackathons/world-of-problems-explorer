@@ -83,8 +83,6 @@ const MapboxMap: React.FC<MapboxMapProps> = ({
 
   const projectAnchorsResult = useProjectAnchorsQuery(anchorsQuery);
 
-  console.log("ZOOM", zoom);
-
   useEffect(() => {
     if (!mapContainer.current || mapRef.current) return; // initialize map only once
 
@@ -205,7 +203,6 @@ const MapboxMap: React.FC<MapboxMapProps> = ({
           features: [],
         },
       });
-      console.log("CALL ADD HERE");
       map.addLayer({
         id: LAYERS_ANCHORS,
         type: "symbol",
@@ -217,7 +214,6 @@ const MapboxMap: React.FC<MapboxMapProps> = ({
 
       map.on("click", LAYERS_ANCHORS, (e) => {
         if (!consumeEvent(e)) return;
-        console.log("CLICKED ANCHOR", e, e.features![0]);
 
         if (onClickAnchorRef.current) {
           onClickAnchorRef.current(e.features![0].properties as ProjectAnchor);
@@ -227,7 +223,6 @@ const MapboxMap: React.FC<MapboxMapProps> = ({
 
       map.on("click", LAYERS_COUNTRIES, (e) => {
         if (!consumeEvent(e)) return;
-        console.log("CLICKED COUNTRY", e);
 
         zoomToFeature(map, e.features![0]);
       });
@@ -241,7 +236,6 @@ const MapboxMap: React.FC<MapboxMapProps> = ({
       });
 
       map.on("mouseenter", LAYERS_ANCHORS, (e) => {
-        console.log("ENTER", e, e.features![0]);
         // setPopupToFeature(e.features![0]);
         map.getCanvas().style.cursor = "pointer";
       });
@@ -295,17 +289,17 @@ const MapboxMap: React.FC<MapboxMapProps> = ({
   }, [mapContainer.current]);
 
   useEffect(() => {
-    if (window.location.hash) {
-      const match = window.location.hash.match(/\/-?\d+(\.\d+)?/g);
+    if (router.query.lat && router.query.lng && router.query.zoom) {
+      const { lat, lng, zoom, ...rest } = router.query;
 
-      if (match) {
-        mapRef.current?.setCenter([
-          parseFloat(match[1].replace("/", "")),
-          parseFloat(match[0].replace("/", "")),
-        ]);
-        mapRef.current?.setZoom(parseFloat(match[2].replace("/", "")));
-        setTimeout(() => router.replace({ hash: "" }), 300);
-      }
+      console.log("GOT", lat, lng, zoom);
+      mapRef.current?.setCenter([
+        parseFloat(lng as string),
+        parseFloat(lat as string),
+      ]);
+      mapRef.current?.setZoom(parseFloat(zoom as string));
+
+      router.replace({ query: rest });
     }
   }, [router]);
 

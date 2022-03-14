@@ -93,7 +93,7 @@ export function textColorForTag(tag: ProblemSpace) {
   }
 }
 
-export function hashUrlForAnchor(anchor: ProjectAnchor) {
+export function mapQueryFor(anchor: ProjectAnchor) {
   let zoom = 2.1;
   switch (anchor.impactRange) {
     case "location":
@@ -117,5 +117,9 @@ export function hashUrlForAnchor(anchor: ProjectAnchor) {
       break;
   }
 
-  return `/${anchor.latitude}/${anchor.longitude}/${zoom}`;
+  return {
+    lat: anchor.latitude,
+    lng: anchor.longitude,
+    zoom,
+  };
 }

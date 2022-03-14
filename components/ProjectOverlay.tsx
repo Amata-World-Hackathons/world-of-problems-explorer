@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import { useEffect, useRef } from "react";
 import { useProjectQuery } from "../contexts/ApiContext";
-import { bgColorForTag, hashUrlForAnchor, textColorForTag } from "../utils";
+import { bgColorForTag, mapQueryFor, textColorForTag } from "../utils";
 import ReactMarkdown from "react-markdown";
 import Loading from "./Loading";
 import Link from "next/link";
@@ -187,7 +187,7 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
                   router.push(
                     {
                       pathname: "/",
-                      hash: hashUrlForAnchor(anchor),
+                      query: mapQueryFor(anchor),
                     },
                     undefined,
                     { shallow: true }
