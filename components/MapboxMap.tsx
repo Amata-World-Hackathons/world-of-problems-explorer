@@ -299,7 +299,9 @@ const MapboxMap: React.FC<MapboxMapProps> = ({
       ]);
       mapRef.current?.setZoom(parseFloat(zoom as string));
 
-      router.replace({ query: rest });
+      router.replace({ pathname: "/", query: rest }, undefined, {
+        shallow: true,
+      });
     }
   }, [router]);
 
