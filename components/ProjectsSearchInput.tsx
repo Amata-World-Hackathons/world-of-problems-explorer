@@ -188,33 +188,43 @@ const ProjectsSearchInput: React.FC<ProjectSearchInputProps> = ({
             <li className="flex-1 w-full p-4 flex flex-col justify-center items-center">
               <Loading />
             </li>
-          ) : (
-            (active ? data || [] : []).map((project) => (
-              <li
-                key={project.id}
-                className={classnames(
-                  "w-full p-4 rounded-lg mb-2",
-                  activeProject?.id && activeProject.id === project.id
-                    ? "bg-blue-400"
-                    : "bg-slate-100"
-                )}
-              >
-                <Link
-                  href={{
-                    pathname: "/projects/[projectId]",
-                    query: { projectId: project.id },
-                  }}
+          ) : active ? (
+            <>
+              {(data || []).map((project) => (
+                <li
+                  key={project.id}
+                  className={classnames(
+                    "w-full p-4 rounded-lg mb-2",
+                    activeProject?.id && activeProject.id === project.id
+                      ? "bg-blue-400"
+                      : "bg-slate-100"
+                  )}
                 >
-                  <a
-                    onClick={() => setActive(false)}
-                    className="hover:underline underline-offset-2"
+                  <Link
+                    href={{
+                      pathname: "/projects/[projectId]",
+                      query: { projectId: project.id },
+                    }}
                   >
-                    <TextWithMatch match={search}>{project.name}</TextWithMatch>
-                  </a>
+                    <a
+                      onClick={() => setActive(false)}
+                      className="hover:underline underline-offset-2"
+                    >
+                      <TextWithMatch match={search}>
+                        {project.name}
+                      </TextWithMatch>
+                    </a>
+                  </Link>
+                </li>
+              ))}
+
+              <li className="flex flex-row justify-end font-mono text-xs uppercase text-slate-200">
+                <Link href="/projects/new">
+                  <a onClick={() => setActive(false)}>Create a new project</a>
                 </Link>
               </li>
-            ))
-          )}
+            </>
+          ) : null}
         </ul>
       </div>
     </>

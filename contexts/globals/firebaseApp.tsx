@@ -1,16 +1,17 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import legacyFirebase from "firebase/compat/app";
+import { getFirestore } from "firebase/firestore";
 
 export { default as legacyFirebase } from "firebase/compat/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAZSdMMn9yShaCI7qOFks5nUWbYK7Zg2AE",
-  authDomain: "hacks-and-jams.firebaseapp.com",
-  projectId: "hacks-and-jams",
-  storageBucket: "hacks-and-jams.appspot.com",
-  messagingSenderId: "211703648683",
-  appId: "1:211703648683:web:563ee55bd85fb2d6ed82ee",
+  apiKey: "AIzaSyA6be2T_ZN4kvJIQFMrCsHypkpT5QemY1M",
+  authDomain: "world-of-problems-explorer.firebaseapp.com",
+  projectId: "world-of-problems-explorer",
+  storageBucket: "world-of-problems-explorer.appspot.com",
+  messagingSenderId: "486226266904",
+  appId: "1:486226266904:web:b9e88bfe8b80a26bc92c6d",
 };
 
 export const firebaseApp =
@@ -23,5 +24,8 @@ export const legacyApp =
   typeof window !== "undefined"
     ? legacyFirebase.initializeApp(firebaseConfig)
     : ({} as any);
+
+export const firebaseDb =
+  typeof window !== "undefined" ? getFirestore(firebaseApp) : ({} as any);
 
 export default firebaseApp;

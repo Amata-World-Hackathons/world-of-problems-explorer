@@ -66,7 +66,7 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
       {...rest}
     >
       {loading ? (
-        <Loading className="flex-1" />
+        <Loading />
       ) : data ? (
         <div className="flex flex-col w-full max-w-3xl">
           <div className="flex flex-row justify-between items-center">
@@ -75,7 +75,7 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
                 <span>this is a fork, </span>
                 <Link
                   href={{
-                    pathname: "/projects/[projectId]/fork",
+                    pathname: "/projects/[projectId]",
                     query: { projectId: data.project.forkedFromProjectId },
                   }}
                 >
@@ -125,32 +125,23 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
             ))}
           </ul>
 
-          {data.project.proposedSolution ? (
-            <>
-              <span className="uppercase text-xs">
-                {data.project.proposedSolution.status}
-              </span>
-            </>
-          ) : (
-            <div className="mt-2">
-              This problem has no solution yet, be the first to{" "}
-              <Link
-                href={{
-                  pathname: "/projects/[projectId]/fork",
-                  query: { projectId: data.project.id },
-                }}
-              >
-                <a
-                  className={classnames(
-                    "underline underline-offset-2",
-                    textColor
-                  )}
-                >
-                  propose one
-                </a>
-              </Link>
-            </div>
-          )}
+          <span className="uppercase text-xs">{data.project.status}</span>
+
+          <span className="mt-2 text-sm">
+            Proposed: {data.project.createdDate.toLocaleDateString()}
+          </span>
+          <span className="mt-2 text-sm">
+            Last updated: {data.project.createdDate.toLocaleDateString()}
+          </span>
+
+          <Link
+            href={{
+              pathname: "/projects/[projectId]/edit",
+              query: { projectId: data.project.id },
+            }}
+          >
+            <a className="mt-2 uppercase text-xs">Edit</a>
+          </Link>
 
           <div className={classnames("w-full h-1 my-4", bgColor)} />
 
@@ -162,7 +153,20 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
 
           <h2 className="uppercase text-2xl mb-6">Where</h2>
 
-          <div className={classnames("w-full h-0.5 my-4", bgColor)} />
+          <span className="text-slate-400">
+            Impact markers improves the project&apos;s visibility and help
+            ground it to reality by showing where the project could make an
+            difference.
+          </span>
+
+          <Link
+            href={{
+              pathname: "/projects/[projectId]/anchors/new",
+              query: { projectId: data.project.id },
+            }}
+          >
+            <a className="mt-4 text-sm">Add a new marker</a>
+          </Link>
 
           {data.anchors.map((anchor) => (
             <div key={anchor.id}>
@@ -206,6 +210,23 @@ const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
               <div className={classnames("w-full h-0.5 my-4", bgColor)} />
             </div>
           ))}
+
+          {data.anchors.length ? null : (
+            <div className={classnames("w-full h-0.5 my-4", bgColor)} />
+          )}
+
+          <div className="">
+            Have a better idea? You can create a{" "}
+            <Link
+              href={{
+                pathname: "/projects/[projectId]/fork",
+                query: { projectId: data.project.id },
+              }}
+            >
+              <a>fork</a>
+            </Link>{" "}
+            of the project with your own proposal
+          </div>
         </div>
       ) : null}
     </section>

@@ -18,6 +18,10 @@ class MyDocument extends Document {
         <Head>
           <meta name="description" content="Explore a world of problems" />
           <link rel="icon" href="/favicon.ico" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Material+Icons"
+            rel="stylesheet"
+          ></link>
         </Head>
 
         <body>
