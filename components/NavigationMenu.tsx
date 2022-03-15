@@ -42,7 +42,7 @@ const NavigationMenu: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
         )}
       </div>
 
-      <ul className="bg-slate-800 hidden md:block absolute left-0 top-1/2 -translate-y-1/2 z-20 rounded-r-lg py-2 border-r border-y border-cyan-600">
+      <ul className="bg-slate-800 flex-col items-center hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 rounded-r-lg py-2 border-r border-y border-cyan-600">
         <li>
           <Link
             href={{
@@ -58,6 +58,17 @@ const NavigationMenu: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
               <span className="material-icons text-3xl">public</span>
             </a>
           </Link>
+        </li>
+
+        <li
+          className="text-xs mt-2"
+          style={{
+            writingMode: "vertical-rl",
+            textOrientation: "mixed",
+          }}
+        >
+          Made with <span className="material-icons text-xs">favorite</span>{" "}
+          <a href="https://amata.world">@amata.world</a>
         </li>
       </ul>
 
